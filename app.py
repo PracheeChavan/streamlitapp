@@ -5,10 +5,7 @@ import pandas_datareader as web
 import datetime as dt
 from datetime import date
 import streamlit as st
-
 from sklearn.preprocessing import MinMaxScaler
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Dropout, LSTM
 from keras.models import load_model
 
 # Load data
@@ -114,7 +111,8 @@ for date_delta in range(5):
     prediction = model.predict(real_data)
     prediction = round(scaler.inverse_transform(prediction)[0][0],2)
     next_date = (dt.datetime.now() + dt.timedelta(days=date_delta)).date()
-    st.subheader(f"{next_date} Prediction is: {prediction}")
+    st.subheader('Next 5 days Predicted stock Prices:')
+    st.(f"{next_date}: {prediction}")
     empty_list.append(prediction)
 #print(f"Prediction: {prediction}")
     
